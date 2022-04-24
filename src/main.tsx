@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 import '../declaration.d.ts'
-import { Homepage } from './pages/Homepage'
+import { Homepage } from './pages/Homepage/Homepage'
 
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
