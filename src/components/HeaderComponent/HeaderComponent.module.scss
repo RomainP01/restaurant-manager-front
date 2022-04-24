@@ -15,14 +15,24 @@
 }
 
 .headerIconContainer {
-  height: 70%;
-  background-color: #6c4343;
-  border-radius: 5%;
-}
-.headerIconContainer:hover {
-  background-color: #e09664;
+  height: 100%;
+  width: 100%;
 }
 
 .headerIcon {
   color: white;
+}
+
+.headerLinkContainer {
+  width: 20%;
+  height: 70%;
+  background-color: #6c4343;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerLinkContainer:hover {
+  background-color: #e09664;
 }

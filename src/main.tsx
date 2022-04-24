@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './index.css'
 import '../declaration.d.ts'
-import { Homepage } from './pages/Homepage/Homepage'
+import './index.css'
+import { HomePage } from './pages/Homepage/Homepage'
+import { NewOrderPage } from './pages/NewOrderPage/NewOrderPage'
 
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -12,7 +13,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path='/newOrder' element={<NewOrderPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
