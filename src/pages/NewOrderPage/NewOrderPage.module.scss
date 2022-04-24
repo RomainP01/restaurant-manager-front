@@ -6,3 +6,22 @@
   left: 0;
   top: 0;
 }
+
+.formContainer {
+  height: 80%;
+  background-color: #e09664;
+  color: white;
+  border-radius: 3%;
+}
+
+.menuItemStyle {
+  margin: 1rem;
+  min-width: 120px;
+  width: 600px;
+}
+
+.formControl {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 80%;
+}

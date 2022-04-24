@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import '../declaration.d.ts'
 import './index.css'
-import { HomePage } from './pages/Homepage/Homepage'
+import { HomePage } from './pages/HomePage/HomePage'
 import { NewOrderPage } from './pages/NewOrderPage/NewOrderPage'
 
 const queryClient = new QueryClient()
