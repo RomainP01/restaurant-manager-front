@@ -13,9 +13,8 @@ export const getAllDishes = async () => {
 
 const useGetAllDishes = () => {
     return useQuery(
-        [,] as const,
-        ({ queryKey }) => {
-            const [,] = queryKey;
+        'getAllDishes',
+        () => {
             return getAllDishes();
         },
     );

@@ -1,17 +1,20 @@
-import { Button, FormControl, Grid, InputLabel, makeStyles, MenuItem, Select, SelectChangeEvent } from "@mui/material"
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material"
 import { useState } from "react"
 import { Header } from "../../components/HeaderComponent/HeaderComponent"
-import { NewOrderFormComponent } from "../../components/NewOrderFormComponent/NewOrderFormComponent"
+import useGetAllDesserts from "../../queries/useGetAllDesserts"
+import useGetAllDrinks from "../../queries/useGetAllDrinks"
+import useGetAllMeals from "../../queries/useGetAllMeals"
+import useGetAllStarters from "../../queries/useGetAllStarters"
 import styles from './NewOrderPage.module.scss'
 
 export const NewOrderPage = () => {
-    const entreeDisponible = ['salade', 'oeuf']
+    const entreeDisponible = useGetAllStarters().data
     const [selectedStarter, setSelectedStarter] = useState("")
-    const platDisponible = ['Welsh', 'Sou-soupe']
+    const platDisponible = useGetAllMeals().data
     const [selectedMeal, setSelectedMeal] = useState("")
-    const dessertDisponible = ['Charlotte aux fraises', 'Tarte tatin']
+    const dessertDisponible = useGetAllDesserts().data
     const [selectedDrink, setSelectedDrink] = useState("")
-    const boissonDisponible = ['8.6', 'Coca bien frais chakal']
+    const boissonDisponible = useGetAllDrinks().data
     const [selectedDessert, setSelectedDessert] = useState("")
     const tableDisponible = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     const [selectedTable, setSelectedTable] = useState("")
@@ -33,10 +36,10 @@ export const NewOrderPage = () => {
                                     label={"Choix de l'entrée"}
                                     labelId={'starterselect-label'}
                                 >
-                                    {entreeDisponible.map((elt) => {
+                                    {entreeDisponible && entreeDisponible.map((elt) => {
                                         return (
-                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt}>
-                                                {elt}
+                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt.id}>
+                                                {elt.label}
                                             </MenuItem>
                                         );
                                     })}
@@ -52,10 +55,10 @@ export const NewOrderPage = () => {
                                     label={"Choix du plat"}
                                     labelId={'mealselect-label'}
                                 >
-                                    {platDisponible.map((elt) => {
+                                    {platDisponible && platDisponible.map((elt) => {
                                         return (
-                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt}>
-                                                {elt}
+                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt.id}>
+                                                {elt.label}
                                             </MenuItem>
                                         );
                                     })}
@@ -72,10 +75,10 @@ export const NewOrderPage = () => {
                                     label={"Choix du dessert"}
                                     labelId={'dessertselect-label'}
                                 >
-                                    {dessertDisponible.map((elt) => {
+                                    {dessertDisponible && dessertDisponible.map((elt) => {
                                         return (
-                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt}>
-                                                {elt}
+                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt.id}>
+                                                {elt.label}
                                             </MenuItem>
                                         );
                                     })}
@@ -92,10 +95,10 @@ export const NewOrderPage = () => {
                                     label={"Choix de la boisson"}
                                     labelId={'drinkselect-label'}
                                 >
-                                    {boissonDisponible.map((elt) => {
+                                    {boissonDisponible && boissonDisponible.map((elt) => {
                                         return (
-                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt}>
-                                                {elt}
+                                            <MenuItem className={styles.menuItemStyle} key={Math.random()} value={elt.id}>
+                                                {elt.label}
                                             </MenuItem>
                                         );
                                     })}
