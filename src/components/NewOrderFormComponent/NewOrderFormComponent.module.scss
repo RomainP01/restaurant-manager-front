@@ -1,4 +1,18 @@
 .formContainer {
-  width: 10%;
-  height: 10%;
+  height: 80%;
+  background-color: white;
+  color: white;
+  border-radius: 3%;
+}
+
+.menuItemStyle {
+  margin: 1rem;
+  min-width: 120px;
+  width: 600px;
+}
+
+.formControl {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 80%;
 }
