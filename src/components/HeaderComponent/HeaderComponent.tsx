@@ -11,7 +11,7 @@ export const Header = () => {
                     <HomeIcon className={styles.headerIcon} fontSize={"large"} />
                 </Grid>
             </Link>
-            <Link to="/newOrder" className={styles.headerLinkContainer}>
+            <Link to="/newCommand" className={styles.headerLinkContainer}>
                 <Grid container item xs={2} md={2} direction="row" justifyContent="center" alignItems="center" className={styles.headerIconContainer}>
                     <MenuBookIcon className={styles.headerIcon} fontSize={"large"} />
                 </Grid>

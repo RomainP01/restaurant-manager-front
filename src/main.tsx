@@ -4,8 +4,9 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import '../declaration.d.ts'
 import './index.css'
+import { AllCommandsPage } from './pages/AllCommandsPage/AllCommandsPage'
 import { HomePage } from './pages/HomePage/HomePage'
-import { NewOrderPage } from './pages/NewOrderPage/NewOrderPage'
+import { NewCommandPage } from './pages/NewCommandPage/NewCommandPage'
 
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -14,7 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path='/newOrder' element={<NewOrderPage />} />
+          <Route path='/newCommand' element={<NewCommandPage />} />
+          <Route path='/allCommands' element={<AllCommandsPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

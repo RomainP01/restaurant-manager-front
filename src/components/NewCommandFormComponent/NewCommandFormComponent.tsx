@@ -10,9 +10,9 @@ import useGetAllDrinks from "../../queries/useGetAllDrinks";
 import useGetAllMeals from "../../queries/useGetAllMeals";
 import useGetAllStarters from "../../queries/useGetAllStarters";
 import { usePostCommand } from "../../queries/usePostCommand";
-import styles from "./NewOrderFormComponent.module.scss";
+import styles from "./NewCommandFormComponent.module.scss";
 
-export const NewOrderFormComponent = () => {
+export const NewCommandFormComponent = () => {
     const entreeDisponible = useGetAllStarters().data
     const [selectedStarter, setSelectedStarter] = useState<Starter>()
     const platDisponible = useGetAllMeals().data
