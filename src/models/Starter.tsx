@@ -1,4 +1,4 @@
 export type Starter = {
-    id: string;
+    id: number;
     label: string;
 }

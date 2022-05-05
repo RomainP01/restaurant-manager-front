@@ -1,5 +1,5 @@
 export type Dish = {
-    id: string;
+    id: number;
     name: string;
     dishType: string;
     dishStatus: string;

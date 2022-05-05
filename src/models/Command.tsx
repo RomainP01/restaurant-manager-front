@@ -1,11 +1,11 @@
 export type Command = {
-    id?: string;
+    id: number;
     commandDate: Date
-    commandTable: string;
-    idStarter: string
-    idMeal: string
-    idDessert: string
-    idDrink: string
+    commandTable: number
+    idStarter: number
+    idMeal: number
+    idDessert: number
+    idDrink: number
     stateStarter: string
     stateMeal: string
     stateDessert: string

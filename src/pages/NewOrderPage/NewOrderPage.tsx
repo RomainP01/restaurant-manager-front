@@ -22,20 +22,20 @@ export const NewOrderPage = () => {
     const [selectedDrink, setSelectedDrink] = useState<Drink>()
     const boissonDisponible = useGetAllDrinks().data
     const [selectedDessert, setSelectedDessert] = useState<Dessert>()
-    const tableDisponible = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-    const [selectedTable, setSelectedTable] = useState("")
+    const tableDisponible = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const [selectedTable, setSelectedTable] = useState(0)
 
     const handlePostCommand = () => {
         refetch()
     }
     const command: Command = {
-        id: 3,
+        id: 8,
         commandDate: new Date(),
-        commandTable: selectedTable,
-        idStarter: selectedStarter?.id as string,
-        idMeal: selectedMeal?.id as string,
-        idDessert: selectedDessert?.id as string,
-        idDrink: selectedDrink?.id as string,
+        commandTable: selectedTable as number,
+        idStarter: selectedStarter?.id as number,
+        idMeal: selectedMeal?.id as number,
+        idDessert: selectedDessert?.id as number,
+        idDrink: selectedDrink?.id as number,
         stateStarter: "En attente",
         stateMeal: "En attente",
         stateDessert: "En attente",
@@ -150,7 +150,7 @@ export const NewOrderPage = () => {
                             <InputLabel shrink id={'tableselect-label'}>Choix de la table</InputLabel>
                             <Select
                                 value={selectedTable}
-                                onChange={(event) => setSelectedTable(event.target.value as string)}
+                                onChange={(event) => setSelectedTable(event.target.value as number)}
                                 label={"Choix de la table"}
                                 labelId={'tableselect-label'}
                             >

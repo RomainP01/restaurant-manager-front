@@ -1,4 +1,4 @@
 export type Meal = {
-    id: string;
+    id: number;
     label: string;
 }
