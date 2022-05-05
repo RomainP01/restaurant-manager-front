@@ -2,6 +2,7 @@ import { Grid } from "@mui/material"
 import styles from './HeaderComponent.module.scss'
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import TakeoutDiningIcon from '@mui/icons-material/TakeoutDining';
 import { Link } from "react-router-dom";
 export const Header = () => {
     return (
@@ -9,6 +10,11 @@ export const Header = () => {
             <Link to="/" className={styles.headerLinkContainer}>
                 <Grid container item xs={2} md={2} direction="row" justifyContent="center" alignItems="center" className={styles.headerIconContainer}>
                     <HomeIcon className={styles.headerIcon} fontSize={"large"} />
+                </Grid>
+            </Link>
+            <Link to="/allCommands" className={styles.headerLinkContainer}>
+                <Grid container item xs={2} md={2} direction="row" justifyContent="center" alignItems="center" className={styles.headerIconContainer}>
+                    <TakeoutDiningIcon className={styles.headerIcon} fontSize={"large"} />
                 </Grid>
             </Link>
             <Link to="/newCommand" className={styles.headerLinkContainer}>
