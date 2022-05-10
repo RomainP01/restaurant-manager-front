@@ -7,6 +7,7 @@ import './index.css'
 import { AllCommandsPage } from './pages/AllCommandsPage/AllCommandsPage'
 import { HomePage } from './pages/HomePage/HomePage'
 import { NewCommandPage } from './pages/NewCommandPage/NewCommandPage'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/allCommands' element={<AllCommandsPage />} />
         </Routes>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 )

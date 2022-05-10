@@ -32,9 +32,11 @@ export const AllCommandsPage = () => {
         }
     }
     return (
-        <Grid container className={styles.allCommandsPageContainer} direction={"row"}>
+        <Grid container className={styles.allCommandsPageContainer} direction={"row"} justifyContent="center" >
             <Header />
-            <Grid container direction="row" justifyContent="center" alignItems="center" style={{ width: "100%", height: 'fit-content' }}>
+            <Grid container sx={{
+                width: "50%", height: 'fit-content', marginTop: '5%', backgroundColor: "#fddf97"
+            }} >
                 {commands && commands.reverse().map(command => {
                     return (
                         <CommandContainerComponent command={command} convertIdToObject={convertIdToObject} />

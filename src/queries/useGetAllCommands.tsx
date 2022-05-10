@@ -13,7 +13,7 @@ export const getAllCommands = async () => {
 
 const useGetAllCommands = () => {
     return useQuery(
-        'getAllDesserts',
+        'getAllCommands',
         () => {
             return getAllCommands();
         },
