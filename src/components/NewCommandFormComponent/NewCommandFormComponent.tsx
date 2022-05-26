@@ -26,6 +26,7 @@ export const NewCommandFormComponent = () => {
 
     const handlePostCommand = () => {
         refetch()
+        
     }
     const command: Command = {
         id: 8,

@@ -1,43 +1,39 @@
-import { Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
+import { Button, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { useState } from "react"
+import { RefetchOptions, RefetchQueryFilters, QueryObserverResult } from "react-query"
 import { Command } from "../../models/Command"
-import { useUpdateCommand } from "../../queries/useUpdateStateCommand"
 import styles from './CommandItemComponent.module.scss'
 
 interface Props {
     label: string | undefined
     stateOfFood: string
-    command: Command
+    commandToUpdate: Command
+    setCommandToUpdate: React.Dispatch<React.SetStateAction<Command>>
     type: string
+    refetch: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<Command[], unknown>>
 }
-export const CommandItemComponent = ({ label, stateOfFood, command, type }: Props) => {
-
-    const [commandToUpdate, setCommandToUpdate] = useState<Command>(command)
+export const CommandItemComponent = ({ label, stateOfFood, commandToUpdate, setCommandToUpdate, type, refetch }: Props) => {
     const [selectedState, setSelectedState] = useState<string>(stateOfFood)
     const handleSelectChange = (event: SelectChangeEvent<unknown>) => {
         switch (type) {
             case "starter":
                 setSelectedState(event.target.value as string)
-                
                 setCommandToUpdate({ ...commandToUpdate, stateStarter: event.target.value as string })
                 break
             case "meal":
                 setSelectedState(event.target.value as string)
-                setCommandToUpdate({ ...commandToUpdate, stateMeal: selectedState })
+                setCommandToUpdate({ ...commandToUpdate, stateMeal: event.target.value as string })
                 break
             case "dessert":
                 setSelectedState(event.target.value as string)
-                setCommandToUpdate({ ...commandToUpdate, stateDessert: selectedState })
+                setCommandToUpdate({ ...commandToUpdate, stateDessert: event.target.value as string })
                 break
             case "drink":
                 setSelectedState(event.target.value as string)
-                setCommandToUpdate({ ...commandToUpdate, stateDrink: selectedState })
+                setCommandToUpdate({ ...commandToUpdate, stateDrink: event.target.value as string })
                 break
         }
-        refetch()
     }
-
-    const { refetch } = useUpdateCommand(commandToUpdate)
     return (
         <Grid container item xs={12} direction="row" justifyContent="center" alignItems="center">
             <Grid item xs={4}>
@@ -63,6 +59,12 @@ export const CommandItemComponent = ({ label, stateOfFood, command, type }: Prop
                     </MenuItem>
 
                 </Select>
+            </Grid>
+            <Grid item xs={3} >
+                {type === "drink" && (
+                    <Button onClick={() => refetch()}>
+                        Mettre à jour la commande
+                    </Button>)}
             </Grid>
         </Grid>
     )

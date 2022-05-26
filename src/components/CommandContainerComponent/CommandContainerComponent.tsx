@@ -1,6 +1,8 @@
 import { Grid, Typography } from "@mui/material"
+import { useState } from "react"
 import { Command } from "../../models/Command"
 import { CommandItemComponent } from "../CommandItemComponent/CommandItemComponent"
+import { useUpdateCommand } from "../../queries/useUpdateStateCommand"
 import styles from './CommandContainerComponent.module.scss'
 
 interface Props {
@@ -14,7 +16,8 @@ export const CommandContainerComponent = ({ command, convertIdToObject }: Props)
     const drink = convertIdToObject(command.idDrink, "drink")
 
     const dateOfCommand = new Date(command.commandDate).toDateString()
-
+    const [commandToUpdate, setCommandToUpdate] = useState<Command>(command)
+    const { refetch } = useUpdateCommand(commandToUpdate)
     return (
         <Grid container item direction="row" justifyContent="center" alignItems="center" className={styles.commandContainer} sx={{ marginBottom: '5%' }}>
             <Grid container item direction="row" justifyContent="space-between">
@@ -25,10 +28,10 @@ export const CommandContainerComponent = ({ command, convertIdToObject }: Props)
                     <Typography variant="caption">Table :{command.commandTable}</Typography>
                 </Grid>
             </Grid>
-            {starter && <CommandItemComponent label={starter.label} stateOfFood={command.stateStarter} command={command} type={"starter"} />}
-            {meal && <CommandItemComponent label={meal.label} stateOfFood={command.stateMeal} command={command} type={"meal"} />}
-            {dessert && <CommandItemComponent label={dessert.label} stateOfFood={command.stateDessert} command={command} type={"dessert"} />}
-            {drink && <CommandItemComponent label={drink.label} stateOfFood={command.stateDrink} command={command} type={"drink"} />}
+            {starter && <CommandItemComponent label={starter.label} stateOfFood={command.stateStarter} commandToUpdate={commandToUpdate} setCommandToUpdate={setCommandToUpdate} type={"starter"} refetch={refetch} />}
+            {meal && <CommandItemComponent label={meal.label} stateOfFood={command.stateMeal} commandToUpdate={commandToUpdate} setCommandToUpdate={setCommandToUpdate} type={"meal"} refetch={refetch} />}
+            {dessert && <CommandItemComponent label={dessert.label} stateOfFood={command.stateDessert} commandToUpdate={commandToUpdate} setCommandToUpdate={setCommandToUpdate} type={"dessert"} refetch={refetch} />}
+            {drink && <CommandItemComponent label={drink.label} stateOfFood={command.stateDrink} commandToUpdate={commandToUpdate} setCommandToUpdate={setCommandToUpdate} type={"drink"} refetch={refetch} />}
 
         </Grid>
     )
