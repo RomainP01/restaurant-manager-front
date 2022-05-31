@@ -1,5 +1,6 @@
 import { Button, FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Command } from "../../models/Command";
 import { Dessert } from "../../models/Dessert";
 import { Drink } from "../../models/Drink";
@@ -157,9 +158,11 @@ export const NewCommandFormComponent = () => {
                             })}
                         </Select>
                     </FormControl>
-                    <Button variant="contained" onClick={() => handlePostCommand()}>
-                        Valider la commande
-                    </Button>
+                    <Link to="/allCommands">
+                        <Button variant="contained" onClick={() => handlePostCommand()}>
+                            Valider la commande
+                        </Button>
+                    </Link>
                 </Grid>
 
             </Grid>

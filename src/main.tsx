@@ -20,7 +20,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/allCommands' element={<AllCommandsPage />} />
         </Routes>
       </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 )

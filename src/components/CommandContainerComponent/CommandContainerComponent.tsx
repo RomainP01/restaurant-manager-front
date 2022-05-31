@@ -3,7 +3,9 @@ import { useState } from "react"
 import { Command } from "../../models/Command"
 import { CommandItemComponent } from "../CommandItemComponent/CommandItemComponent"
 import { useUpdateCommand } from "../../queries/useUpdateStateCommand"
+import ClearIcon from '@mui/icons-material/Clear';
 import styles from './CommandContainerComponent.module.scss'
+import { useDeleteCommand } from "../../queries/useDeleteCommand"
 
 interface Props {
     command: Command
@@ -18,6 +20,12 @@ export const CommandContainerComponent = ({ command, convertIdToObject }: Props)
     const dateOfCommand = new Date(command.commandDate).toDateString()
     const [commandToUpdate, setCommandToUpdate] = useState<Command>(command)
     const { refetch } = useUpdateCommand(commandToUpdate)
+    const { refetch: refetchDelete } = useDeleteCommand(command)
+
+    const handleDelete = () => {
+        refetchDelete()
+        window.location.reload();
+    }
     return (
         <Grid container item direction="row" justifyContent="center" alignItems="center" className={styles.commandContainer} sx={{ marginBottom: '5%' }}>
             <Grid container item direction="row" justifyContent="space-between">
@@ -26,6 +34,9 @@ export const CommandContainerComponent = ({ command, convertIdToObject }: Props)
                 </Grid>
                 <Grid item xs={1}>
                     <Typography variant="caption">Table :{command.commandTable}</Typography>
+                </Grid>
+                <Grid item xs={3} >
+                    <ClearIcon sx={{ color: 'red' }} onClick={() => handleDelete()} />
                 </Grid>
             </Grid>
             {starter && <CommandItemComponent label={starter.label} stateOfFood={command.stateStarter} commandToUpdate={commandToUpdate} setCommandToUpdate={setCommandToUpdate} type={"starter"} refetch={refetch} />}

@@ -34,6 +34,12 @@ export const CommandItemComponent = ({ label, stateOfFood, commandToUpdate, setC
                 break
         }
     }
+
+    const handleUpdate = () => {
+        refetch()
+        window.location.reload();
+    }
+
     return (
         <Grid container item xs={12} direction="row" justifyContent="center" alignItems="center">
             <Grid item xs={4}>
@@ -62,10 +68,11 @@ export const CommandItemComponent = ({ label, stateOfFood, commandToUpdate, setC
             </Grid>
             <Grid item xs={3} >
                 {type === "drink" && (
-                    <Button onClick={() => refetch()}>
+                    <Button onClick={() => handleUpdate()}>
                         Mettre à jour la commande
                     </Button>)}
             </Grid>
+
         </Grid>
     )
 }
